@@ -1,0 +1,46 @@
+vkfft (1.3.2+ds2-1~deb12+1) unstable; urgency=medium
+
+  * New upstream version 1.3.2.
+
+ -- Gerhard Baer <gerhard.baer@protonmail.com>  Tue, 24 Oct 2023 18:42:12 +0200
+
+vkfft (1.3.1+ds2-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints. + libvkfft-dev: Add Multi-Arch: foreign.
+
+  [ Picca Frédéric-Emmanuel ]
+  * exclude the metal-cpp files (not usefull on Linux)
+  * New upstream version 1.3.1+ds2
+
+ -- Picca Frédéric-Emmanuel <picca@debian.org>  Wed, 20 Sep 2023 21:33:35 +0200
+
+vkfft (1.2.26+ds1-1) unstable; urgency=medium
+
+  * New upstream version 1.2.26+ds1
+
+ -- Picca Frédéric-Emmanuel <picca@debian.org>  Sun, 18 Sep 2022 13:11:01 +0200
+
+vkfft (1.2.17+ds1-1) unstable; urgency=medium
+
+  * New upstream version 1.2.17+ds1
+  * d/control: Added Debian Science Maintainers
+    <debian-science-maintainers@lists.alioth.debian.org>
+
+ -- Picca Frédéric-Emmanuel <picca@debian.org>  Thu, 06 Jan 2022 18:03:24 +0100
+
+vkfft (1.2.12+ds1-2) unstable; urgency=medium
+
+  * Source-only upload for migration to testing, no changes.
+
+ -- Roland Mas <lolando@debian.org>  Fri, 05 Nov 2021 15:09:58 +0100
+
+vkfft (1.2.12+ds1-1) unstable; urgency=medium
+
+  [ Picca Frédéric-Emmanuel ]
+  * Initial release (closes: #996396).
+
+  [ Roland Mas ]
+  * Packaging fixes
+
+ -- Roland Mas <lolando@debian.org>  Wed, 13 Oct 2021 19:25:22 +0200

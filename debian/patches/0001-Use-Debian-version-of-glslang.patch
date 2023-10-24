@@ -1,0 +1,427 @@
+From: Roland Mas <lolando@debian.org>
+Date: Sat, 9 Oct 2021 18:07:18 +0200
+Subject: Use Debian version of glslang
+
+---
+ VkFFT_TestSuite.cpp                                                     | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/sample_0_benchmark_VkFFT_single.cpp | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/sample_1000_VkFFT_single_2_4096.cpp | 2 +-
+ .../vkFFT_scripts/src/sample_1001_benchmark_VkFFT_double_2_4096.cpp     | 2 +-
+ .../vkFFT_scripts/src/sample_1003_benchmark_VkFFT_single_3d_2_512.cpp   | 2 +-
+ .../vkFFT_scripts/src/sample_100_benchmark_VkFFT_single_nd_dct.cpp      | 2 +-
+ .../vkFFT_scripts/src/sample_101_benchmark_VkFFT_double_nd_dct.cpp      | 2 +-
+ .../src/sample_10_benchmark_VkFFT_single_multipleBuffers.cpp            | 2 +-
+ .../vkFFT_scripts/src/sample_11_precision_VkFFT_single.cpp              | 2 +-
+ .../vkFFT_scripts/src/sample_12_precision_VkFFT_double.cpp              | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/sample_13_precision_VkFFT_half.cpp  | 2 +-
+ .../vkFFT_scripts/src/sample_14_precision_VkFFT_single_nonPow2.cpp      | 2 +-
+ .../vkFFT_scripts/src/sample_15_precision_VkFFT_single_r2c.cpp          | 2 +-
+ .../vkFFT_scripts/src/sample_16_precision_VkFFT_single_dct.cpp          | 2 +-
+ .../vkFFT_scripts/src/sample_17_precision_VkFFT_double_dct.cpp          | 2 +-
+ .../vkFFT_scripts/src/sample_18_precision_VkFFT_double_nonPow2.cpp      | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/sample_1_benchmark_VkFFT_double.cpp | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/sample_2_benchmark_VkFFT_half.cpp   | 2 +-
+ .../vkFFT_scripts/src/sample_3_benchmark_VkFFT_single_3d.cpp            | 2 +-
+ .../src/sample_4_benchmark_VkFFT_single_3d_zeropadding.cpp              | 2 +-
+ .../vkFFT_scripts/src/sample_50_convolution_VkFFT_single_1d_matrix.cpp  | 2 +-
+ .../sample_51_convolution_VkFFT_single_3d_matrix_zeropadding_r2c.cpp    | 2 +-
+ .../src/sample_52_convolution_VkFFT_single_2d_batched_r2c.cpp           | 2 +-
+ .../src/sample_5_benchmark_VkFFT_single_disableReorderFourStep.cpp      | 2 +-
+ .../vkFFT_scripts/src/sample_6_benchmark_VkFFT_single_r2c.cpp           | 2 +-
+ .../vkFFT_scripts/src/sample_7_benchmark_VkFFT_single_Bluestein.cpp     | 2 +-
+ .../vkFFT_scripts/src/sample_8_benchmark_VkFFT_double_Bluestein.cpp     | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/user_benchmark_VkFFT.cpp            | 2 +-
+ benchmark_scripts/vkFFT_scripts/src/utils_VkFFT.cpp                     | 2 +-
+ vkFFT/vkFFT.h                                                           | 2 +-
+ 30 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/VkFFT_TestSuite.cpp b/VkFFT_TestSuite.cpp
+index 54ebb31..c499dca 100644
+--- a/VkFFT_TestSuite.cpp
++++ b/VkFFT_TestSuite.cpp
+@@ -9,7 +9,7 @@
+ #include <inttypes.h>
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_0_benchmark_VkFFT_single.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_0_benchmark_VkFFT_single.cpp
+index b85dde5..9f94fca 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_0_benchmark_VkFFT_single.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_0_benchmark_VkFFT_single.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_1000_VkFFT_single_2_4096.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_1000_VkFFT_single_2_4096.cpp
+index 00942e5..6632186 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_1000_VkFFT_single_2_4096.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_1000_VkFFT_single_2_4096.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_1001_benchmark_VkFFT_double_2_4096.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_1001_benchmark_VkFFT_double_2_4096.cpp
+index 4d58c00..66308f6 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_1001_benchmark_VkFFT_double_2_4096.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_1001_benchmark_VkFFT_double_2_4096.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_1003_benchmark_VkFFT_single_3d_2_512.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_1003_benchmark_VkFFT_single_3d_2_512.cpp
+index 997eccd..5b4793c 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_1003_benchmark_VkFFT_single_3d_2_512.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_1003_benchmark_VkFFT_single_3d_2_512.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_100_benchmark_VkFFT_single_nd_dct.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_100_benchmark_VkFFT_single_nd_dct.cpp
+index f753278..ab9bc67 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_100_benchmark_VkFFT_single_nd_dct.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_100_benchmark_VkFFT_single_nd_dct.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_101_benchmark_VkFFT_double_nd_dct.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_101_benchmark_VkFFT_double_nd_dct.cpp
+index 2867664..7a4264b 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_101_benchmark_VkFFT_double_nd_dct.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_101_benchmark_VkFFT_double_nd_dct.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_10_benchmark_VkFFT_single_multipleBuffers.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_10_benchmark_VkFFT_single_multipleBuffers.cpp
+index 610ec24..205f1f9 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_10_benchmark_VkFFT_single_multipleBuffers.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_10_benchmark_VkFFT_single_multipleBuffers.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_11_precision_VkFFT_single.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_11_precision_VkFFT_single.cpp
+index 59e8ec9..5b3e978 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_11_precision_VkFFT_single.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_11_precision_VkFFT_single.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_12_precision_VkFFT_double.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_12_precision_VkFFT_double.cpp
+index a8c53fc..076529f 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_12_precision_VkFFT_double.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_12_precision_VkFFT_double.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_13_precision_VkFFT_half.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_13_precision_VkFFT_half.cpp
+index 8879fc8..b45f7ad 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_13_precision_VkFFT_half.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_13_precision_VkFFT_half.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_14_precision_VkFFT_single_nonPow2.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_14_precision_VkFFT_single_nonPow2.cpp
+index aab387c..b203ac7 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_14_precision_VkFFT_single_nonPow2.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_14_precision_VkFFT_single_nonPow2.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_15_precision_VkFFT_single_r2c.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_15_precision_VkFFT_single_r2c.cpp
+index 64ca781..c69835d 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_15_precision_VkFFT_single_r2c.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_15_precision_VkFFT_single_r2c.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_16_precision_VkFFT_single_dct.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_16_precision_VkFFT_single_dct.cpp
+index ca3d719..e44c4cc 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_16_precision_VkFFT_single_dct.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_16_precision_VkFFT_single_dct.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_17_precision_VkFFT_double_dct.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_17_precision_VkFFT_double_dct.cpp
+index d47de3e..cffa4ac 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_17_precision_VkFFT_double_dct.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_17_precision_VkFFT_double_dct.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_18_precision_VkFFT_double_nonPow2.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_18_precision_VkFFT_double_nonPow2.cpp
+index e1518fe..1b77688 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_18_precision_VkFFT_double_nonPow2.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_18_precision_VkFFT_double_nonPow2.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_1_benchmark_VkFFT_double.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_1_benchmark_VkFFT_double.cpp
+index d23999f..0de20e7 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_1_benchmark_VkFFT_double.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_1_benchmark_VkFFT_double.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_2_benchmark_VkFFT_half.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_2_benchmark_VkFFT_half.cpp
+index a3bd5c0..a04473f 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_2_benchmark_VkFFT_half.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_2_benchmark_VkFFT_half.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_3_benchmark_VkFFT_single_3d.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_3_benchmark_VkFFT_single_3d.cpp
+index 4579df5..0d4e2f5 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_3_benchmark_VkFFT_single_3d.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_3_benchmark_VkFFT_single_3d.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_4_benchmark_VkFFT_single_3d_zeropadding.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_4_benchmark_VkFFT_single_3d_zeropadding.cpp
+index f8f9277..fbff2d8 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_4_benchmark_VkFFT_single_3d_zeropadding.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_4_benchmark_VkFFT_single_3d_zeropadding.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_50_convolution_VkFFT_single_1d_matrix.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_50_convolution_VkFFT_single_1d_matrix.cpp
+index b53b743..ab2754c 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_50_convolution_VkFFT_single_1d_matrix.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_50_convolution_VkFFT_single_1d_matrix.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_51_convolution_VkFFT_single_3d_matrix_zeropadding_r2c.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_51_convolution_VkFFT_single_3d_matrix_zeropadding_r2c.cpp
+index 7eae7dd..05b4498 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_51_convolution_VkFFT_single_3d_matrix_zeropadding_r2c.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_51_convolution_VkFFT_single_3d_matrix_zeropadding_r2c.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_52_convolution_VkFFT_single_2d_batched_r2c.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_52_convolution_VkFFT_single_2d_batched_r2c.cpp
+index a6a2165..7c6aaad 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_52_convolution_VkFFT_single_2d_batched_r2c.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_52_convolution_VkFFT_single_2d_batched_r2c.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_5_benchmark_VkFFT_single_disableReorderFourStep.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_5_benchmark_VkFFT_single_disableReorderFourStep.cpp
+index da81965..7031987 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_5_benchmark_VkFFT_single_disableReorderFourStep.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_5_benchmark_VkFFT_single_disableReorderFourStep.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_6_benchmark_VkFFT_single_r2c.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_6_benchmark_VkFFT_single_r2c.cpp
+index 4afbeaf..5a951c7 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_6_benchmark_VkFFT_single_r2c.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_6_benchmark_VkFFT_single_r2c.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_7_benchmark_VkFFT_single_Bluestein.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_7_benchmark_VkFFT_single_Bluestein.cpp
+index bb89465..0e17419 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_7_benchmark_VkFFT_single_Bluestein.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_7_benchmark_VkFFT_single_Bluestein.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/sample_8_benchmark_VkFFT_double_Bluestein.cpp b/benchmark_scripts/vkFFT_scripts/src/sample_8_benchmark_VkFFT_double_Bluestein.cpp
+index bd038a1..b643762 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/sample_8_benchmark_VkFFT_double_Bluestein.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/sample_8_benchmark_VkFFT_double_Bluestein.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/user_benchmark_VkFFT.cpp b/benchmark_scripts/vkFFT_scripts/src/user_benchmark_VkFFT.cpp
+index f6a1808..3e3b419 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/user_benchmark_VkFFT.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/user_benchmark_VkFFT.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/benchmark_scripts/vkFFT_scripts/src/utils_VkFFT.cpp b/benchmark_scripts/vkFFT_scripts/src/utils_VkFFT.cpp
+index ee6763c..e0c715a 100644
+--- a/benchmark_scripts/vkFFT_scripts/src/utils_VkFFT.cpp
++++ b/benchmark_scripts/vkFFT_scripts/src/utils_VkFFT.cpp
+@@ -13,7 +13,7 @@
+ 
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+diff --git a/vkFFT/vkFFT.h b/vkFFT/vkFFT.h
+index 98af298..5551102 100644
+--- a/vkFFT/vkFFT.h
++++ b/vkFFT/vkFFT.h
+@@ -35,7 +35,7 @@
+ #include <inttypes.h>
+ #if(VKFFT_BACKEND==0)
+ #include "vulkan/vulkan.h"
+-#include "glslang_c_interface.h"
++#include <glslang/Include/glslang_c_interface.h>
+ #elif(VKFFT_BACKEND==1)
+ #include <nvrtc.h>
+ #include <cuda.h>
