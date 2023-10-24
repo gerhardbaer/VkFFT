@@ -11,6 +11,7 @@ if (NOT DEFINED GLSLANG_GIT_TAG)
 endif()
 
 include(FetchContent)
+include(FindPkgConfig)
 set(VKFFT_BACKEND 0 CACHE STRING "0 - Vulkan, 1 - CUDA, 2 - HIP, 3 - OpenCL, 4 - Level Zero, 5 - Metal")
 
 if(${VKFFT_BACKEND} EQUAL 1)
@@ -122,23 +123,8 @@ elseif(${VKFFT_BACKEND} EQUAL 2)
 elseif(${VKFFT_BACKEND} EQUAL 3)
 	find_package(OpenCL REQUIRED)
 elseif(${VKFFT_BACKEND} EQUAL 4)
-	set(LevelZero_LIBRARY "/usr/lib/x86_64-linux-gnu/")
-	set(LevelZero_INCLUDE_DIR "/usr/include/")
-	find_library(
-		LevelZero_LIB
-		NAMES "ze_loader"
-		PATHS ${LevelZero_LIBRARY}
-		PATH_SUFFIXES "lib" "lib64"
-		NO_DEFAULT_PATH
-	  )
-	find_path(
-		LevelZero_INCLUDES
-		NAMES "ze_api.h"
-		PATHS ${LevelZero_INCLUDE_DIR}
-		PATH_SUFFIXES "include" 
-		NO_DEFAULT_PATH
-	  )
-	target_include_directories(${PROJECT_NAME} PUBLIC ${LevelZero_INCLUDES})
+	pkg_check_modules(LevelZero level-zero libze_loader)
+	target_include_directories(${PROJECT_NAME} PUBLIC ${LevelZero_INCLUDE_DIRS})
 elseif(${VKFFT_BACKEND} EQUAL 5)
 	add_compile_options(-WMTL_IGNORE_WARNINGS)
 	find_library(FOUNDATION_LIB Foundation REQUIRED)
