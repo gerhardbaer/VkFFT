@@ -1,3 +1,9 @@
+vkfft (1.3.4+ds2-1~deb12+1) unstable; urgency=medium
+
+  * New upstream version 1.3.4.
+
+ -- Gerhard Baer <Gerhard.Baer@protonmail.com>  Fri, 23 Feb 2024 20:26:47 +0100
+
 vkfft (1.3.2+ds2-1~deb12+1) unstable; urgency=medium
 
   * New upstream version 1.3.2.
